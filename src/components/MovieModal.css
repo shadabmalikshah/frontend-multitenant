@@ -1,0 +1,69 @@
+.movie-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+.movie-modal-content {
+  background: #fff;
+  border-radius: 8px;
+  padding: 32px;
+  width: 400px;
+  position: relative;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.12);
+}
+.close-btn {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #e71a0f;
+  cursor: pointer;
+}
+.movie-modal-content h2 {
+  margin-bottom: 18px;
+  color: #e71a0f;
+  font-size: 1.3rem;
+}
+.movie-modal-content form {
+  display: flex;
+  flex-direction: column;
+}
+.movie-modal-content input,
+.movie-modal-content textarea {
+  margin-bottom: 12px;
+  padding: 8px;
+  font-size: 1rem;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+}
+.movie-btn {
+  background: #e71a0f;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 0;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.movie-btn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+.movie-btn:hover:not(:disabled) {
+  background: #b31309;
+}
+.movie-error {
+  color: #e71a0f;
+  margin-top: 8px;
+  font-size: 0.95rem;
+}
