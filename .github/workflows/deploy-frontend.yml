@@ -53,15 +53,16 @@ jobs:
             -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info
             -Dsonar.exclusions=**/node_modules/**,**/build/**
 
-     # - name: Trivy scan dependencies
-      #  uses: aquasecurity/trivy-action@v0.32.0
-       # with:
-        #  scan-type: 'fs'
-         # ignore-unfixed: true
-          #severity: 'CRITICAL,HIGH'
-          #format: 'table'
-          #exit-code: '0'
-          #path: '.'
+      # Uncomment and update Trivy step if a working version is available
+      # - name: Trivy scan dependencies
+      #   uses: aquasecurity/trivy-action@v0.19.2
+      #   with:
+      #     scan-type: 'fs'
+      #     ignore-unfixed: true
+      #     severity: 'CRITICAL,HIGH'
+      #     format: 'table'
+      #     exit-code: '0'
+      #     path: '.'
 
       - name: Build frontend
         run: npm run build
@@ -71,6 +72,12 @@ jobs:
         with:
           workload_identity_provider: ${{ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }}
           service_account: ${{ secrets.GCP_SERVICE_ACCOUNT }}
+
+      - name: Show active gcloud account
+        run: gcloud auth list
+
+      - name: Show credentials file
+        run: cat $GOOGLE_APPLICATION_CREDENTIALS
 
       - name: Upload to GCS bucket
         run: |
