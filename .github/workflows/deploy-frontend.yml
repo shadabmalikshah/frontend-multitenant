@@ -54,7 +54,7 @@ jobs:
           echo "Coverage uploaded via SonarQube scan step"
 
       - name: Trivy scan dependencies
-        uses: aquasecurity/trivy-action@v0.19.2
+        uses: aquasecurity/trivy-action@vv0.33.1
         with:
          scan-type: 'fs'
          ignore-unfixed: true
