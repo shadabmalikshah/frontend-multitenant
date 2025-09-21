@@ -33,7 +33,7 @@ MovieList.propTypes = {
           setMovies([]);
         }
       });
-  }, [refresh, userToken]);
+  }, [refresh, userToken, tenant]);
 
   return (
     <div style={{display: 'flex', flexWrap: 'wrap', justifyContent: 'flex-start'}}>
