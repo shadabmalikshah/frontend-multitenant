@@ -81,7 +81,10 @@ jobs:
 
       - name: Upload to GCS bucket
         run: |
-          gsutil -m rsync -r build gs://${{ env.GCS_BUCKET }}
+          export GOOGLE_APPLICATION_CREDENTIALS=$GOOGLE_APPLICATION_CREDENTIALS
+          export CLOUDSDK_AUTH_CREDENTIAL_FILE_OVERRIDE=$GOOGLE_APPLICATION_CREDENTIALS
+          export CLOUDSDK_CORE_PROJECT=${{ env.GCP_PROJECT_ID }}
+          gsutil -o "Credentials:gs_service_key_file=$GOOGLE_APPLICATION_CREDENTIALS" -m rsync -r build gs://${{ env.GCS_BUCKET }}
 
       - name: Notify Slack on success
         if: success()
