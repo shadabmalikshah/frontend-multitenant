@@ -54,14 +54,14 @@ jobs:
           echo "Coverage uploaded via SonarQube scan step"
 
       - name: Trivy scan dependencies
-        uses: aquasecurity/trivy-action@v0.13.0
+        uses: aquasecurity/trivy-action@v0.19.2
         with:
-          scan-type: 'fs'
-          ignore-unfixed: true
-          severity: 'CRITICAL,HIGH'
-          format: 'table'
-          exit-code: '0'
-          path: '.'
+         scan-type: 'fs'
+         ignore-unfixed: true
+         severity: 'CRITICAL,HIGH'
+         format: 'table'
+         exit-code: '0'
+         path: '.'
 
       - name: Build frontend
         run: npm run build
